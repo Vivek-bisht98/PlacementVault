@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+<div class="col-md-8">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h2 class="text-center mb-4">
+
+                Edit Experience
+
+            </h2>
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Company Name
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="company_name"
+                        class="form-control"
+                        value="{{ experience.company_name }}">
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Role
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="role"
+                        list="roles"
+                        class="form-control"
+                        value="{{ experience.role }}">
+
+                    <datalist id="roles">
+
+                        <option value="Software Engineer">
+                        <option value="Associate Software Engineer">
+                        <option value="Full Stack Developer">
+                        <option value="Backend Developer">
+                        <option value="Frontend Developer">
+                        <option value="Python Developer">
+                        <option value="Data Analyst">
+                        <option value="Business Analyst">
+                        <option value="Data Scientist">
+                        <option value="ML Engineer">
+                        <option value="Cloud Engineer">
+                        <option value="DevOps Engineer">
+                        <option value="QA Engineer">
+
+                    </datalist>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Round Type
+
+                    </label>
+
+                    <select
+                        name="round_type"
+                        class="form-select">
+
+                        <option {% if experience.round_type == "OA" %}selected{% endif %}>OA</option>
+
+                        <option {% if experience.round_type == "GD" %}selected{% endif %}>GD</option>
+
+                        <option {% if experience.round_type == "Technical" %}selected{% endif %}>Technical</option>
+
+                        <option {% if experience.round_type == "HR" %}selected{% endif %}>HR</option>
+
+                    </select>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Focus Subject
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="focus_subject"
+                        list="subjects"
+                        class="form-control"
+                        value="{{ experience.focus_subject }}">
+
+                    <datalist id="subjects">
+
+                        <option value="DSA">
+                        <option value="SQL">
+                        <option value="DBMS">
+                        <option value="OOP">
+                        <option value="OS">
+                        <option value="CN">
+                        <option value="Python">
+                        <option value="Java">
+                        <option value="Aptitude">
+                        <option value="Machine Learning">
+                        <option value="Power BI">
+                        <option value="Excel">
+
+                    </datalist>
+
+                </div>
+
+                <div class="mb-3">
+
+                    <label class="form-label">
+
+                        Experience
+
+                    </label>
+
+                    <textarea
+                        name="experience"
+                        rows="8"
+                        class="form-control">{{ experience.experience }}</textarea>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="btn btn-warning w-100">
+
+                    Update Experience
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+{% endblock %}

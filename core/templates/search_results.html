@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+    <h2 class="text-center">
+
+        {{ company }}
+
+    </h2>
+
+    <hr>
+
+    <h4>
+
+        Available Roles
+
+    </h4>
+
+    {% for role in roles %}
+
+    <div class="card mt-3">
+
+        <div class="card-body">
+
+            <h5>
+
+                {{ role.role }}
+
+            </h5>
+
+            <a href="/role/{{ role.role }}/"
+               class="btn btn-primary">
+
+                View Rounds
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-warning">
+
+        No roles found for this company.
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+</div>
+
+{% endblock %}

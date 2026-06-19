@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ role }}</h1>
+
+<h2>{{ round_type }}</h2>
+
+<h3>{{ focus_subject }}</h3>
+
+<hr>
+
+{% for exp in experiences %}
+
+<h4>
+
+{{ exp.user.username }}
+
+</h4>
+
+<p>
+
+{{ exp.experience }}
+
+</p>
+
+<hr>
+
+{% endfor %}
+{% endblock %}

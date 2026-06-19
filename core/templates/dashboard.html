@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Dashboard</h1>
+
+<div class="row mt-4">
+
+
+<div class="col-md-6">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h2>{{ schedules.count }}</h2>
+
+            <p>Total Schedules</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="col-md-6">
+
+    <div class="card shadow">
+
+        <div class="card-body text-center">
+
+            <h2>{{ experiences.count }}</h2>
+
+            <p>Total Experiences</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+<div class="mt-4">
+
+
+<a href="/add-schedule/"
+   class="btn btn-primary">
+
+    Add Schedule
+
+</a>
+
+<a href="/publish-experience/"
+   class="btn btn-success">
+
+    Publish Experience
+
+</a>
+
+
+</div>
+
+<hr>
+
+<h3>Search Company</h3>
+
+<form action="/search/" method="GET">
+
+
+<div class="input-group">
+
+    <input
+        type="text"
+        name="company"
+        class="form-control"
+        placeholder="Search Company">
+
+    <button
+        class="btn btn-dark">
+
+        Search
+
+    </button>
+
+</div>
+
+
+</form>
+
+<hr>
+
+<h3>My Experiences</h3>
+
+{% for exp in experiences %}
+
+<div class="card mt-3">
+
+
+<div class="card-body">
+
+    <h4>{{ exp.company_name }}</h4>
+
+    <p><b>Role:</b> {{ exp.role }}</p>
+
+    <p><b>Round:</b> {{ exp.round_type }}</p>
+
+    <p><b>Focus Subject:</b> {{ exp.focus_subject }}</p>
+
+    <a href="/edit-experience/{{ exp.id }}/"
+       class="btn btn-warning">
+
+        Edit
+
+    </a>
+
+    <a href="/delete-experience/{{ exp.id }}/"
+       class="btn btn-danger">
+
+        Delete
+
+    </a>
+
+</div>
+
+
+</div>
+
+{% empty %}
+
+<p>No experiences published yet.</p>
+
+{% endfor %}
+
+<hr>
+
+<h3>My Schedules</h3>
+
+{% for schedule in schedules %}
+
+<div class="card mt-3">
+
+<div class="card-body">
+
+    <h5>{{ schedule.company_name }}</h5>
+
+    <p><b>Role:</b> {{ schedule.role }}</p>
+
+    <p><b>Round:</b> {{ schedule.round_type }}</p>
+
+    <p><b>Date:</b> {{ schedule.date }}</p>
+
+    <p><b>Time:</b> {{ schedule.time }}</p>
+
+</div>
+
+
+</div>
+
+{% empty %}
+
+<p>No schedules added yet.</p>
+
+{% endfor %}
+
+{% endblock %}

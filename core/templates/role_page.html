@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card shadow">
+
+
+<div class="card-body">
+
+    <h2 class="text-center">
+
+        {{ role }}
+
+    </h2>
+
+    <hr>
+
+    <h4>
+
+        Available Rounds
+
+    </h4>
+
+    {% for round in rounds %}
+
+    <div class="card mt-3">
+
+        <div class="card-body">
+
+            <h5>
+
+                {{ round.round_type }}
+
+            </h5>
+
+            <a href="/round/{{ role }}/{{ round.round_type }}/"
+               class="btn btn-primary">
+
+                View Experiences
+
+            </a>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-warning">
+
+        No rounds found.
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</div>
+
+{% endblock %}
